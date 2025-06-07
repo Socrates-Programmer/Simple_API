@@ -1,0 +1,7 @@
+__pycache__/
+.ipynb_checkpoints/
+.venv/
+resources/__pycache/
+docker-compose.yml
+dockerfile
+project.idx
