@@ -15,7 +15,7 @@ bp = Blueprint("stores", __name__, description = "Operations on stores")
 class Store(MethodView):
     @bp.response(200, StoreSchema)
     def get(self, store_id):
-        store = StoreModel.query.get_or_error(store_id)
+        store = StoreModel.query.get_or_404(store_id)
 
         return store
 
