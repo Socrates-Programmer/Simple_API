@@ -3,5 +3,6 @@ __pycache__/
 .venv/
 resources/__pycache/
 docker-compose.yml
-dockerfile
 project.idx
+docker/
+instance/

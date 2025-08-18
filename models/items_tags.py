@@ -2,9 +2,9 @@ from db import db
 
 class ItemsTags(db.Model):
 
-    __table__ = "items_tags"
+    __tablename__ = "items_tags"
 
-    id = db.Column(db.Integer, primery_key=True)
-    item_id = db.Column(db.Integer, db.Foreignkey("items.id"))
-    tag_id = db.Column(db.Integer, db.Foreignkey("tags.id"))
+    id = db.Column(db.Integer, primary_key=True)
+    item_id = db.Column(db.Integer, db.ForeignKey("items.id"))
+    tag_id = db.Column(db.Integer, db.ForeignKey("tags.id"))
     
