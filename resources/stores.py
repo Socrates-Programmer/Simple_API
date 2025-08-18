@@ -11,7 +11,7 @@ from flask_smorest import Blueprint, abort
 from schema import StoreSchema
 bp = Blueprint("stores", __name__, description = "Operations on stores")
 
-@bp.route("/store/<string:store_id>")
+@bp.route("/store/<int:store_id>")
 class Store(MethodView):
     @bp.response(200, StoreSchema)
     def get(self, store_id):
