@@ -66,7 +66,7 @@ class ItemList(MethodView):
         items = ItemModel.query.all()
         return items
 
-    @jwt_required()
+    @jwt_required(fresh=True)
     @bp.arguments(ItemSchema)
     @bp.response(201, ItemSchema)
     def post(self, item_data):

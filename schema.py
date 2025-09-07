@@ -18,7 +18,7 @@ class PlainTagSchema(Schema):
 class ItemUpdateSchema(Schema):
     name = fields.Str()
     price = fields.Float()
-    store_id = fields.Int() 
+    store_id = fields.Int()
 
 #Nested is used to include related objects in the schema
 class ItemSchema(PlainItemSchema):
