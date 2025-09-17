@@ -10,6 +10,7 @@ from resources.user import blp as UserBlueprint
 from resources.items import bp as ItemBlueprint
 from resources.stores import bp as StoreBlueprint
 from resources.tag import blp as TagBlueprint
+from flask_migrate import Migrate
 
 
 def create_app(db_url = None):
@@ -26,6 +27,7 @@ def create_app(db_url = None):
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     # Forzar la clave secreta JWT a ser siempre 'jose', ignorando variables de entorno
     app.config["JWT_SECRET_KEY"] = "jose"
+    migrate = Migrate(app, db)
     db.init_app(app)
 
     api = Api(app)
@@ -90,11 +92,6 @@ def create_app(db_url = None):
             ),
             401,
         )
-
-    with app.app_context():
-        import models  #noqa: F401
-
-        db.create_all()
 
     api.register_blueprint(UserBlueprint)
     api.register_blueprint(ItemBlueprint)
