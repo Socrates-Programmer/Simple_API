@@ -17,6 +17,7 @@ Base mínima de una API en **Flask** con estructura modular, **JWT** (JSON Web T
 
 ## 📁 Estructura del Proyecto
 
+```bash
 Simple_API/
 ├─ app.py
 ├─ db.py
@@ -29,7 +30,7 @@ Simple_API/
 ├─ resources/                     # blueprints/endpoints
 ├─ migrations/                    # historial de migraciones
 └─ docker/                        # assets de despliegue (si aplica)
-
+```
 
 ---
 
@@ -63,7 +64,7 @@ pip install -r requirements.txt
 2. Variables de entorno
 Crea un archivo .flaskenv (para desarrollo) o exporta variables en tu shell:
 
-Bash
+```
 
 # .flaskenv (solo dev; no subir secretos)
 FLASK_APP=app.py
@@ -83,11 +84,12 @@ DATABASE_URL=sqlite:///data.db
 3. Migraciones de BD
 Aplica las migraciones iniciales a la base de datos:
 
-Bash
+```bash
 
 flask db upgrade
 4. Ejecutar
-Bash
+
+```bash
 
 flask run
 # Accede a: http://localhost:5000
@@ -95,7 +97,7 @@ flask run
 Build & Run
 Usa el dockerfile incluido para construir y ejecutar la imagen:
 
-Bash
+```Bash
 
 docker build -t simple-api .
 
@@ -104,7 +106,7 @@ docker run --name simple-api \
   -p 5000:5000 simple-api
 (Opcional) si agregas docker-compose.yml, podrías usar:
 
-Bash
+```Bash
 
 docker compose up --build
 🔑 Autenticación (JWT)
@@ -129,7 +131,7 @@ DELETE	/items/<id>	Borrado de recurso
 
 Exportar a Hojas de cálculo
 Ejemplos curl
-Bash
+```
 
 # Health
 curl -i http://localhost:5000/
@@ -149,17 +151,19 @@ tests/
   ├─ conftest.py
   ├─ test_health.py
   └─ test_items.py
+  
 Ejecutar
-Bash
+```Bash
 
 pytest -q
 ♻️ Comandos de Migración
-Bash
+```Bash
 
 flask db init           # solo una vez (si no existe migrations/)
 flask db migrate -m "mensaje"
 flask db upgrade
 flask db downgrade
+```
 🔒 Buenas Prácticas
 No subir .flaskenv/.env con secretos al repositorio.
 
@@ -198,10 +202,8 @@ Push: git push origin feature/tu-feature
 
 Abre un Pull Request
 
-📄 Licencia
-Agrega un archivo LICENSE. Recomendado: MIT o Apache-2.0.
-
-Sin LICENSE, por defecto no hay permisos de uso/redistribución.
 
 📫 Contacto
 Abre un Issue con tu duda o propuesta de mejora.
+
+--marcosavila3005@gmail.com
