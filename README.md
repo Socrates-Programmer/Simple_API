@@ -1,4 +1,5 @@
-#Simple API: Base Modular en Flask 🐍
+#Simple API: 
+Base Modular en Flask 🐍
 
 Una base mínima y robusta para construir una API RESTful con Flask. Incluye una estructura modular, seguridad JWT, gestión de bases de datos con migraciones, y soporte completo para Docker.
 Ideal para proyectos educativos, prototipos rápidos y empezar con las mejores prácticas de Flask.
@@ -8,12 +9,12 @@ Ideal para proyectos educativos, prototipos rápidos y empezar con las mejores p
 Flask organizado por blueprints y módulos (models/, resources/, etc.).
 Base de Datos: SQLAlchemy + Flask-Migrate para un esquema versionado y fácil de actualizar.
 
-###Autenticación Segura: 
+##Autenticación Segura: 
 JWT con Blocklist para invalidar tokens de forma segura (logout/rotación).
 Validación de Datos: Marshmallow (o esquemas en schema.py) para una serialización/validación limpia.
 Despliegue Simple: Dockerfile para empaquetado y despliegue reproducible.
 
-###Configuración: 
+##Configuración: 
 Soporte para variables de entorno vía .flaskenv (desarrollo) y variables de entorno estándar (producción).
 
 ---
