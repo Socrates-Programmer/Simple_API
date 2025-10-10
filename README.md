@@ -12,7 +12,7 @@ Configuración: Soporte para variables de entorno vía .flaskenv (desarrollo) y 
 
 ---
 #📁 Estructura del Proyecto
-
+```
 Simple_API/
 ├─ app.py
 ├─ db.py
@@ -25,7 +25,7 @@ Simple_API/
 ├─ resources/                     # Blueprints/Endpoints de la API
 ├─ migrations/                    # Historial de Alembic/Migrate
 └─ docker/                        # Assets de despliegue (si aplica)
-
+```
 ---
 #🧰 Requisitos
 Python 3.10+
@@ -156,7 +156,7 @@ Protegida
 Borrado de recurso
 Protegida
 ---
-
+---
 #♻️ Comandos de Migración (Alembic)
 Comando
 ```bash
@@ -169,7 +169,7 @@ Aplica todas las migraciones pendientes.
 flask db downgrade
 Deshace la última migración aplicada.
 ```
-
+---
 #📫 Contacto
 Si tienes alguna duda o propuesta de mejora, por favor, abre un Issue en GitHub.
 Email: marcosavila3005@gmail.com
