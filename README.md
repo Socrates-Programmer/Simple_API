@@ -61,28 +61,12 @@ python -m venv .venv
 source .venv/bin/activate
 
 pip install -r requirements.txt
-2. Variables de entorno
-Crea un archivo .flaskenv (para desarrollo) o exporta variables en tu shell:
-
 ```
 
-# .flaskenv (solo dev; no subir secretos)
-FLASK_APP=app.py
-FLASK_ENV=development
-FLASK_RUN_HOST=0.0.0.0
-FLASK_RUN_PORT=5000
+##2. Variables de entorno
+Crea un archivo .flaskenv (para desarrollo) o exporta variables en tu shell:
 
-# Seguridad
-JWT_SECRET_KEY=cambia-esto-por-un-secreto-seguro
 
-# Base de datos
-# Opción SQLite (desarrollo)
-DATABASE_URL=sqlite:///data.db
-
-# Opción Postgres (producción)
-# DATABASE_URL=postgresql+psycopg2://user:pass@host:5432/dbname
-3. Migraciones de BD
-Aplica las migraciones iniciales a la base de datos:
 
 ```bash
 
