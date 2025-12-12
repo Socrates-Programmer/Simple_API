@@ -32,6 +32,9 @@ def create_app(db_url = None):
 
     api = Api(app)
     jwt = JWTManager(app)
+        # 🔥 CREAR TABLAS AUTOMÁTICAMENTE EN RENDER
+    with app.app_context():
+        db.create_all()
 
     @jwt.needs_fresh_token_loader
     def token_not_fresh_callback(jwt_header, jwt_payload):
@@ -97,9 +100,5 @@ def create_app(db_url = None):
     api.register_blueprint(ItemBlueprint)
     api.register_blueprint(StoreBlueprint)
     api.register_blueprint(TagBlueprint)
-
-    with app.app_context():
-        from db import db
-        db.create_all()
 
     return app
