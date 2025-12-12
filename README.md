@@ -171,18 +171,46 @@ docker compose up --build
 
 ## 🔌 Endpoints (Plantilla)
 
-Ajusta estos paths según los blueprints que implementes.
+🔐 Autenticación y Usuarios
 
-| Método  | Path            | Descripción                      | Seguridad  |
-|---------|-----------------|----------------------------------|------------|
-| GET     | /               | Health/Hello (estado del servicio)| Pública    |
-| POST    | /auth/login     | Inicia sesión y obtiene JWT       | Pública    |
-| DELETE  | /auth/logout    | Cierra sesión (invalida JWT)      | Protegida  |
-| GET     | /items          | Lista de recursos                 | Protegida  |
-| POST    | /items          | Crea un nuevo recurso             | Protegida  |
-| GET     | /items/<id>     | Detalle de recurso                | Protegida  |
-| PUT     | /items/<id>     | Actualización de recurso          | Protegida  |
-| DELETE  | /items/<id>     | Borrado de recurso                | Protegida  |
+| Método | Endpoint              | Descripción                                     | Seguridad   |
+| ------ | --------------------- | ----------------------------------------------- | ----------- |
+| POST   | `/register`           | Registro de nuevo usuario                       | Pública     |
+| POST   | `/login`              | Inicia sesión y devuelve access & refresh token | Pública     |
+| POST   | `/refresh`            | Renueva el access token usando refresh token    | JWT Refresh |
+| POST   | `/logout`             | Cierra sesión (token se agrega a blocklist)     | JWT         |
+| GET    | `/user/<int:user_id>` | Obtiene un usuario por ID                       | Pública     |
+| DELETE | `/user/<int:user_id>` | Elimina un usuario por ID                       | Pública     |
+
+📦 Items
+
+| Método | Endpoint              | Descripción                       | Seguridad   |
+| ------ | --------------------- | --------------------------------- | ----------- |
+| GET    | `/item`               | Lista todos los items             | JWT         |
+| POST   | `/item`               | Crea un nuevo item                | JWT (Fresh) |
+| GET    | `/item/<int:item_id>` | Obtiene un item por ID            | JWT         |
+| PUT    | `/item/<int:item_id>` | Actualiza o crea un item (upsert) | Pública     |
+| DELETE | `/item/<int:item_id>` | Elimina un item                   | JWT         |
+
+🏬 Stores
+
+| Método | Endpoint                | Descripción               | Seguridad |
+| ------ | ----------------------- | ------------------------- | --------- |
+| GET    | `/store`                | Lista todas las tiendas   | Pública   |
+| POST   | `/store`                | Crea una nueva tienda     | Pública   |
+| GET    | `/store/<int:store_id>` | Obtiene una tienda por ID | Pública   |
+| DELETE | `/store/<int:store_id>` | Elimina una tienda        | Pública   |
+
+🏷️ Tags
+
+| Método | Endpoint                               | Descripción                                | Seguridad |
+| ------ | -------------------------------------- | ------------------------------------------ | --------- |
+| GET    | `/store/<int:store_id>/tag`            | Lista los tags de una tienda               | Pública   |
+| POST   | `/store/<int:store_id>/tag`            | Crea un tag en una tienda                  | Pública   |
+| GET    | `/tag/<int:tag_id>`                    | Obtiene un tag por ID                      | Pública   |
+| DELETE | `/tag/<int:tag_id>`                    | Elimina un tag si no está asociado a items | Pública   |
+| POST   | `/item/<int:item_id>/tag/<int:tag_id>` | Asocia un tag a un item                    | Pública   |
+| DELETE | `/item/<int:item_id>/tag/<int:tag_id>` | Quita un tag de un item                    | Pública   |
 
 ---
 
@@ -195,6 +223,15 @@ Ajusta estos paths según los blueprints que implementes.
 | flask db upgrade              | Aplica todas las migraciones pendientes        |
 | flask db downgrade            | Deshace la última migración aplicada           |
 
+🛡️ Seguridad
+
+Autenticación basada en JWT
+
+Soporte para Access Token y Refresh Token
+
+Logout implementado mediante BLOCKLIST
+
+Algunos endpoints requieren token fresh para mayor seguridad
 ---
 
 ## 📫 Contacto
